@@ -1,0 +1,16 @@
+.test {
+  text-align: center;
+  background-color: #001e3c;
+  color: white;
+  position: relative;
+  max-width: 35%;
+  min-width: 450px;
+  margin: 50px auto 50px auto;
+}
+
+@media (max-width: 500px) {
+  .test {
+    max-width: 80%;
+    min-width: 200px;
+  }
+}
