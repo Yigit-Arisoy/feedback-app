@@ -8,7 +8,7 @@ function FeedbackItem({ feedback, deleteFeedback }) {
     deleteFeedback(feedback.id);
   };
   return (
-    <div className="App">
+    <div className="feedbackItem">
       <div className="test">
         <div className="rating">{feedback.rating}</div>
         <button

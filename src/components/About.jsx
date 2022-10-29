@@ -10,6 +10,8 @@ function About() {
         <li style={{ textAlign: "left" }}>States</li>
         <li style={{ textAlign: "left" }}>Routers</li>
         <li style={{ textAlign: "left" }}>Context</li>
+        <li style={{ textAlign: "left" }}>JSON-Server</li>
+        <li style={{ textAlign: "left" }}>Material UI</li>
       </ul>
       <p style={{ marginTop: "300px" }}>Yiğit Arısoy - 24.10.2022 16:04</p>
       <Link to="/" className="links" style={{ textDecoration: "none" }}>

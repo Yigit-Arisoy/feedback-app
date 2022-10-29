@@ -5,35 +5,47 @@ import FeedbackForm from "./components/FeedbackForm";
 import Header from "./components/Header";
 import About from "./components/About";
 import { Link } from "react-router-dom";
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 export const feedbackContext = createContext();
 
 function App() {
-  const [feedbackList, setFeedbackList] = useState([
-    {
-      id: 0,
-      rating: 5,
-      text: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero, asperiores.",
-    },
-    {
-      id: 1,
-      rating: 7,
-      text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt, soluta repudiandae similique nihil alias mollitia amet.",
-    },
+  const [feedbackList, setFeedbackList] = useState([]);
 
-    {
-      id: 4,
-      rating: 6,
-      text: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate facere iste dicta dolores, eum nisi!",
-    },
-  ]);
+  useEffect(() => {
+    fetchFeedback();
+  }, []);
+
+  const fetchFeedback = async () => {
+    const response = await fetch("http://localhost:5000/feedback");
+    const data = await response.json();
+
+    setFeedbackList(data);
+
+    console.log(data);
+  };
+
+  const addFeedback = async (text, rating) => {
+    const response = await fetch("http://localhost:5000/feedback", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ rating, text }),
+    });
+
+    const data = await response.json();
+
+    console.log(data);
+
+    setFeedbackList([data, ...feedbackList]);
+  };
 
   return (
     <>
-      <feedbackContext.Provider value={{ feedbackList, setFeedbackList }}>
+      <feedbackContext.Provider
+        value={{ feedbackList, setFeedbackList, addFeedback }}
+      >
         <Router>
           <Header />
           <Routes>

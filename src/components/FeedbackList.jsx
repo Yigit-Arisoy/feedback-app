@@ -6,7 +6,9 @@ import { feedbackContext } from "../App.js";
 
 function FeedbackList() {
   const { feedbackList, setFeedbackList } = useContext(feedbackContext);
-  const deleteFeedback = (id) => {
+  const deleteFeedback = async (id) => {
+    await fetch(`http://localhost:5000/feedback/${id}`, { method: "DELETE" });
+
     setFeedbackList(feedbackList.filter((item) => item.id != id));
   };
   return (
@@ -16,6 +18,7 @@ function FeedbackList() {
           feedback={item}
           deleteFeedback={deleteFeedback}
           key={index}
+          className="visible"
         ></FeedbackItem>
       ))}
     </div>

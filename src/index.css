@@ -57,7 +57,7 @@ code {
   border-style: groove;
 }
 
-input {
+.inputText {
   background-color: #001e3c;
   color: white;
   flex-grow: 1;
@@ -65,7 +65,7 @@ input {
   font-size: 16px;
   height: 40px;
 }
-input:focus {
+.inputText:focus {
   outline: none;
 }
 
@@ -89,4 +89,8 @@ input:focus {
 
 .btn:disabled:hover {
   opacity: 1;
+}
+
+.points {
+  margin-bottom: 20px;
 }
